@@ -8,7 +8,7 @@ Meanwhile, in the Bay Area/San Francisco in particular, the cost of owning a hom
 
 My goal is this project is to predict daily airbnb listing prices, and understanding the most impactful features for determining listing prices
 
-## Datasets & Exploratory Analysis
+## The Datasets
 
 ### 52 Data Sets Comprised of information for every Airbnb listing available in that month, for 52 months from Sep 2015 to April 2020
 <pre>-Data: 395,202 entries, 92 columns
@@ -22,16 +22,22 @@ My goal is this project is to predict daily airbnb listing prices, and understan
 <br>-Converted the "Last Scraped" date to date format, and created additional date features to indicate year, month-year, month, dayofweek, and day
 <br>-Converted columns related to currency (price, extra_people, security_deposit and cleaning_fee] from string to float, removed '$'
 <br>- ADD</pre>
-#### EDA Feature Importances
-<br>**Numeric Features: (Based on Correlation plot with correlation over 1%)**
+## EDA Feature Importances
+<br>**Overview of the Data from 2015-2018 (Train Data)**
+![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/Daily_rate_over_time.png)
+<br>-There is clear seasonality between months. Spike in Airbnb Rentals in 2017 were strongly linked to rent increases in some of the largest US metro areas.
+![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/Distribution_Daily_Prices.png)![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/Log_DailyRates.png)
+<br>-Distribution of the daily listings do not follow a normal distribution, so we will take the log and remove the outliers
+<br><br>**Numeric Features: (Based on Correlation plot with correlation over 1%)**
 ![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/numeric_corr.png)
 <br>-Accommodates, bathrooms, bedrooms, beds, cleaning_fee, security_deposit, review_scores_rating, review_scores_cleanliness, review_scores_location,   review_scores_accuracy, review_scores_communication, review_scores_checkin, review_scores_value, extra_people, month, year, number_of_reviews
 ![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/price_vs_accom.png)
 -There is a trend, the more rooms/accomodations available will increase the listing price until a certain threshold, where it appears it no longer matters and does not affect price. Likely due to the fact that places with that much space have difficulties filling.
-<br>**Categorical Features**
-<br>-neighbourhood_cleansed, property_type, room_type
-![image](ADD)
-
+<br><br> **Categorical Features**
+<br>-Features that seem to have an impact: neighbourhood_cleansed, property_type, room_type
+![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/neighborhood_dist.png)
+![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/propertytype_dist.png)
+![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/roomtype_dist.png)
 
 ## Methodology & Baseline Model
 <br>**Methodology:** 
@@ -44,10 +50,10 @@ My goal is this project is to predict daily airbnb listing prices, and understan
 <br>-Between both Test-Split Options, the performance of the models were the same.
 <br>-Linear Regression: Cross-Val R2: 0.61, RMSE: 1.20
 <br>-Decision Tree Regressor: Cross-Val R2: 0.81, RMSE: 1.09
-<br>-Random Forest Regressor: Cross-Val R2: 0.86, RMSE: 1.06, Cross-Val-Score: 
+<br>-Random Forest Regressor: Cross-Val R2: 0.86, RMSE: 1.06
 <br>-Gradient Boosting Regressor: Cross-Val R2: 0.65, RMSE: 1.17
-<br><br>**Will proceed with Random Forest Estimator for future iterations.**
-<br>**Feature Importance from Base Model**
+<br>**Will proceed with Random Forest Estimator for future iterations.**
+<br><br>**Feature Importance from Base Model**
 ![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/Feature_imp_BaseModel_RF.png)
 <br>Most important feature: Number of Bedrooms
 <br>Second: Whether or not the Airbnb was access to an entire home/apartment, with the 8th most important feature capturing whether or not the Airbnb was a shared room or not. Seems to highlight that travellers have a preference on privacy.
@@ -67,7 +73,9 @@ My goal is this project is to predict daily airbnb listing prices, and understan
 <br><br>**Categorical Feature for Accomodations/beds/bedrooms/bathrooms**
 <br>Is it above a threshold? Otherwise, price could be lower
 <br><br>**Neighborhoods**
-<br>-Are the listings in the city center?
+<br>After converting the price density into a heatmap on top of San Francisco, it is apparently that the highest listing prices are concentrated in the center of San Francisco.
+![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/scatter_heatmap_neighborhoods.png)
+<br>From this insight, I created a new feature to capture whether or not the listing was in the city center, which I determined as 1 if neighborhood within list: [X,X,X], and 0 if not.
 <br><br>**If time permits NLP text vectorization of columns**
 <br>-ADD
 ![image](ADD)
