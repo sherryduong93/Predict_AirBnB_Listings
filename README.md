@@ -25,7 +25,7 @@ My goal is this project is to predict daily airbnb listing prices, and understan
 <br>**EDA Feature Importances**
 <br>Numeric Features: (Based on Correlation plot)
 <br>-Accommodates, bathrooms, bedrooms, beds, cleaning_fee, security_deposit
-![image](Graphs/numeric_corr.png)
+![image]('Graphs/numeric_corr.png')
 ADD
 ![image](ADD)
 ADD
