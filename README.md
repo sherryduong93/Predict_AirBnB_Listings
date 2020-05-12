@@ -30,11 +30,13 @@ My goal is this project is to predict daily airbnb listing prices, and understan
 <br>-Distribution of the daily listings do not follow a normal distribution, so we will take the log and remove the outliers
 ![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/Log_DailyRates.png)
 <br>-Now that the dependent variable follows a normal distribution, this will likely help with our predictions.
-### Numeric Features: (Based on Correlation plot with correlation over 1%)
+### Numeric Features: 
 ![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/numeric_corr.png)
-<br>-Accommodates, bathrooms, bedrooms, beds, cleaning_fee, security_deposit, review_scores_rating, review_scores_cleanliness, review_scores_location,   review_scores_accuracy, review_scores_communication, review_scores_checkin, review_scores_value, extra_people, month, year, number_of_reviews
+<br>-Most important features (based on Correlation plot with correlation over 1%): Accommodates, bathrooms, bedrooms, beds, cleaning_fee, security_deposit, review_scores_rating, review_scores_cleanliness, review_scores_location,   review_scores_accuracy, review_scores_communication, review_scores_checkin, review_scores_value, extra_people, month, year, number_of_reviews
 ![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/price_vs_accom.png)
 -There is a trend, the more rooms/accomodations available will increase the listing price until a certain threshold, where it appears it no longer matters and does not affect price. Likely due to the fact that places with that much space have difficulties filling.
+![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/reviews_scatter.png)
+-Review data also shows a positive trend relating to price.
 ### Categorical Features
 <br>-Features that seem to have an impact: neighbourhood_cleansed, property_type, room_type
 ![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/neighborhood_dist.png)
