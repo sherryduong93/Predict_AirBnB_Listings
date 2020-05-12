@@ -22,9 +22,10 @@ My goal is this project is to predict daily airbnb listing prices, and understan
 <br>-Converted the "Last Scraped" date to date format, and created additional date features to indicate year, month-year, month, dayofweek, and day
 <br>-Converted columns related to currency (price, extra_people, security_deposit and cleaning_fee] from string to float, removed '$'
 <br>- ADD</pre>
-<br>**ADD**
-ADD
-![image](ADD)
+<br>**EDA Feature Importances**
+<br>Numeric Features: (Based on Correlation plot)
+<br>-Accommodates, bathrooms, bedrooms, beds, cleaning_fee, security_deposit
+![image](Graphs/numeric_corr.png)
 ADD
 ![image](ADD)
 ADD
