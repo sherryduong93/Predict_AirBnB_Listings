@@ -102,9 +102,12 @@ My goal is this project is to predict daily airbnb listing prices, and understan
 <br>Other: Treasure Island/YBI
 <br>-Cross-Validation R2 for Random Forest: Dropped to 0.86
 <br>-Next Step: Do not proceed with this feature
-<br><br>**Entire House/Apartment, or no**
-<br><br>**Shared room, or no**
-<br><br>**House, or no**
+<br><br>**Eliminate all room_type features except Entire House/Apartment& Shared room.**
+<br>-Cross-Validation R2 for Random Forest: Increased to 0.89, RMSE: 1.04
+<br>-Next Step: Since we were able to eliminate features, seems worth it to reduce the model
+<br><br>**Eliminate all property types except House or Apartment**
+<br>-Cross-Validation R2 for Random Forest: Reduced to 0.88
+<br>-Next Step: Did not reduce performance too much, and was able to remove a lot of features. TBD.
 <br><br>**If time permits NLP text vectorization of columns**
 <br>-ADD
 ![image](ADD)
