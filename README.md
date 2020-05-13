@@ -53,7 +53,7 @@ My goal is this project is to predict daily airbnb listing prices, and understan
 <br>-Test-Split Option 1: Train Data will be from 2015 - 2018. Test data from 2019-2020.
 <br>-Test-Split Option 2: Randomized Test Size of 30% with all available data
 <br><br> **Baseline Models: No model tuning or feature engineering besides converting price to log. Will only be used for the model selection for tuning.** 
-<br>Features selected for Baseline Model (based on EDA): 'accommodates','bathrooms','bed_type','bedrooms', 'beds','cleaning_fee','extra_people', 'host_response_time', 'neighbourhood_cleansed','property_type','review_scores_cleanliness', 'review_scores_rating', 'room_type', 'security_deposit', 'year','month','day_of_week'
+<br>Features selected for Baseline Model (based on EDA): 'accommodates','bathrooms','bed_type','bedrooms', 'beds','cleaning_fee','extra_people', 'host_response_time', 'neighbourhood_cleansed', 'property_type', 'review_scores_cleanliness', 'review_scores_rating', 'room_type', 'security_deposit', 'year', 'month', 'day_of_week'
 <br>Data Processing: Converted Categorical Data to Dummies.
 <br><br>**Baseline Model Performance**
 <br>-Between both Test-Split Options, the performance of the models were the same.
