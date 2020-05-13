@@ -92,14 +92,14 @@ My goal is this project is to predict daily airbnb listing prices, and understan
 ![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/all_listings_sf.png)
 ![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/scatter_heatmap_neighborhoods.png)
 <br>From this insight, I created a new feature to capture whether or not the listing was in the city center, which I determined as 1 if neighborhood within list: ("Western Addition", "South Of Market", "Downtown/Civic Center", "Financial District"), and 0 if not.
-<br><br>-Cross-Validation R2 for Random Forest: Dropped to 0.85
+<br>-Cross-Validation R2 for Random Forest: Dropped to 0.85
 <br>-Next Step: Do not proceed with this feature
-<br>Second Option: Splitting into 4 geographical locations (Northeast, Southeast, Northwest, Southwest), with Northeast holding the top 5% listings in terms of price.
-<br>Northeast: Mission, Western Addition, South Of Market, Castro/Upper Market, Downtown/Civic Center, Haight Ashbury, Nob Hill, Marina, Pacific Heights, Russian Hill, North Beach, Financial District, Chinatown, Presidio Heights, 
+<br><br> **Second Option: Splitting into 4 geographical locations (Northeast, Southeast, Northwest, Southwest), with Northeast holding the top 5% listings in terms of price.**
+<br><pre>Northeast: Mission, Western Addition, South Of Market, Castro/Upper Market, Downtown/Civic Center, Haight Ashbury, Nob Hill, Marina, Pacific Heights, Russian Hill, North Beach, Financial District, Chinatown, Presidio Heights, 
 <br>Southeast: Bernal Heights, Noe Valley, Potrero Hill, Excelsior, Bayview, Glen Park, Visitacion Valley, Crocker Amazon, Diamond Heights
 <br>Northwest: Inner Richmond, Outer Sunset, Outer Richmond, Inner Sunset, Twin Peaks, Seacliff, Golden Gate Park, Presidio
 <br>Southwest: Outer Mission, Parkside, West of Twin Peaks, Ocean View, Lakeshore
-<br>Other: Treasure Island/YBI
+<br>Other: Treasure Island/YBI</pre>
 <br>-Cross-Validation R2 for Random Forest: Dropped to 0.86
 <br>-Next Step: Do not proceed with this feature
 <br><br>**Eliminate all room_type features except Entire House/Apartment& Shared room.**
