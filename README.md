@@ -19,7 +19,7 @@ My goal is this project is to predict daily airbnb listing prices, and understan
 <br>-2018 missing June data</pre>
 <br>**Data Cleaning**
 <pre>-Removed all columns with more that 70% of data being null
-<br>-Converted the "Last Scraped" date to date format, and created additional date features to indicate year, month-year, month, dayofweek, and day
+<br>-Converted the "Last Scraped" date to date format, and engineered additional date features to indicate year, month-year, month, dayofweek, and day
 <br>-Converted columns related to currency (price, extra_people, security_deposit and cleaning_fee] from string to float, removed '$'
 <br>- ADD</pre>
 ## EDA Feature Importances
@@ -37,11 +37,16 @@ My goal is this project is to predict daily airbnb listing prices, and understan
 -There is a trend, the more rooms/accomodations available will increase the listing price until a certain threshold, where it appears it no longer matters and does not affect price. Likely due to the fact that places with that much space have difficulties filling.
 ![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/reviews_scatter.png)
 -Review data also shows a positive trend relating to price.
+![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/cleaning_fee.png)
+-For data related to fee, there is a slight positive trend, but with a lot of noise. May be worth it to look into a conversion of this column from numeric to binary classification
 ### Categorical Features
 <br>-Features that seem to have an impact: neighbourhood_cleansed, property_type, room_type
 ![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/neighborhood_dist.png)
+<br> Some neighborhoods have clear price differences than others. Sea-side neighborhoods tend to have higher prices (IE: Presidio or Marina)
 ![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/propertytype_dist.png)
 ![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/roomtype_dist.png)
+<br>-For host related features: I hypothesized that the host response rate, response time, and senority would provide some insight, but for the most part there were not any significant trends.
+<br>-Same for Cancellation Policy and Instant Booking, graphs for which are in the Jupyter notebook for more information.
 
 ## Methodology & Baseline Model
 <br>**Methodology:** 
@@ -59,28 +64,47 @@ My goal is this project is to predict daily airbnb listing prices, and understan
 <br>**Will proceed with Random Forest Estimator for future iterations.**
 <br><br>**Feature Importance from Baseline Model**
 ![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/Feature_imp_BaseModel_RF.png)
-<br>Most important feature: Number of Bedrooms
-<br>Second: Whether or not the Airbnb was access to an entire home/apartment, with the 8th most important feature capturing whether or not the Airbnb was a shared room or not. Seems to highlight that travellers have a preference on privacy.
-<br>Fees also seem to be important, with all 3 fee categories in the top 20
-<br>Review ratings overall & cleanliness rating contributed to the price, which makes sense.
-<br>Year: Interestingly, year made it into the top 20, but not month. This could be due to the fact that 2017 was vastly different from any other year.
-<br>Property type: Whether or not the property was a house/apartment was also important.
-<br>Appears that neighborhood may not be as important as suspected, though it appears neighborhoods downtown rank higher overall in the feature rankings.
-![image](ADD)
+<br>-Most important feature: Number of Bedrooms
+<br>-Second: Whether or not the Airbnb was access to an entire home/apartment, with the 8th most important feature capturing whether or not the Airbnb was a shared room or not. Seems to highlight that travellers have a preference on privacy.
+<br>-Fees also seem to be important, with all 3 fee categories in the top 20
+<br>-Review ratings overall & cleanliness rating contributed to the price, which makes sense.
+<br>-Year: Interestingly, year made it into the top 20, but not month. This could be due to the fact that 2017 was vastly different from any other year.
+<br>-Property type: Whether or not the property was a house/apartment was also important.
+<br>-Appears that neighborhood may not be as important as suspected, though it appears neighborhoods downtown rank higher overall in the feature rankings.
 <br><br>
-### Feature Engineering
+### Additional Feature Engineering
 <br>**Converting The Fee Columns to "0/1" based on whether or not they had the fee**
-<br>-Cross-Validation R2 for Random Forest dropped to 0.82
+<br>-Cross-Validation R2 for Random Forest: Dropped to 0.82
 <br>-Next Step: Keep columns as is
-<br><br>**Count Of Amenities**
-<br>-ADD
+<br><br>**Creating a feature that captures the count of amenities provided**
+<br>-Currently the "Amenities" columns is a set of amenities, stored as text. I will count the number of items stored in the set, with each item reflecting an amenity provided by the property.
+<br>-Cross-Validation R2 for Random Forest: Increased to 0.88, RMSE: 1.04
+<br>-The num_amenities feature also became the 3rd most important feature in the feature_importance plot.
+![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/num_amenities_imp.png)
+<br>-Next Step: Continue with this feature for future implementation
 <br><br>**Categorical Feature for Accomodations/beds/bedrooms/bathrooms**
-<br>Is it above a threshold? Otherwise, price could be lower
+<br>-Once the number reaches a certain threshold for the accomodation columns, there is an apparent diminishing return.
+<br>-I will create features that determine whether or not the listing is over this threshold.
+<br>-Cross-Validation R2 for Random Forest: Increased to 0.89, RMSE: 1.04
+<br>-Next Step: Not much of an improvement to keep the feature. Remove to prevent overfitting.
 <br><br>**Neighborhoods**
-<br>After converting the price density into a heatmap on top of San Francisco, it is apparently that the highest listing prices are concentrated in the center of San Francisco.
-![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/scatter_heatmap_neighborhoods.png)
+<br>After converting the price density into a heatmap on top of San Francisco, it is apparent that the highest listing prices are concentrated in the center of San Francisco.
 ![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/all_listings_sf.png)
-<br>From this insight, I created a new feature to capture whether or not the listing was in the city center, which I determined as 1 if neighborhood within list: [X,X,X], and 0 if not.
+![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/scatter_heatmap_neighborhoods.png)
+<br>From this insight, I created a new feature to capture whether or not the listing was in the city center, which I determined as 1 if neighborhood within list: ("Western Addition", "South Of Market", "Downtown/Civic Center", "Financial District"), and 0 if not.
+<br><br>-Cross-Validation R2 for Random Forest: Dropped to 0.85
+<br>-Next Step: Do not proceed with this feature
+<br>Second Option: Splitting into 4 geographical locations (Northeast, Southeast, Northwest, Southwest), with Northeast holding the top 5% listings in terms of price.
+<br>Northeast: Mission, Western Addition, South Of Market, Castro/Upper Market, Downtown/Civic Center, Haight Ashbury, Nob Hill, Marina, Pacific Heights, Russian Hill, North Beach, Financial District, Chinatown, Presidio Heights, 
+<br>Southeast: Bernal Heights, Noe Valley, Potrero Hill, Excelsior, Bayview, Glen Park, Visitacion Valley, Crocker Amazon, Diamond Heights
+<br>Northwest: Inner Richmond, Outer Sunset, Outer Richmond, Inner Sunset, Twin Peaks, Seacliff, Golden Gate Park, Presidio
+<br>Southwest: Outer Mission, Parkside, West of Twin Peaks, Ocean View, Lakeshore
+<br>Other: Treasure Island/YBI
+<br>-Cross-Validation R2 for Random Forest: Dropped to 0.86
+<br>-Next Step: Do not proceed with this feature
+<br><br>**Entire House/Apartment, or no**
+<br><br>**Shared room, or no**
+<br><br>**House, or no**
 <br><br>**If time permits NLP text vectorization of columns**
 <br>-ADD
 ![image](ADD)
@@ -96,5 +120,6 @@ My goal is this project is to predict daily airbnb listing prices, and understan
 <br>-Data Source: InsideAirbnb.com. Listing Prices are set by the host and may not reflect the final price paid by the tenant.
 
 ## Goals for future Analysis:
+<br>-Look into specific amenities and if they are more important. Text vectorizer?
 
 
