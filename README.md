@@ -23,7 +23,7 @@ My goal is this project is to predict daily airbnb listing prices, and understan
 <br>-Converted columns related to currency (price, extra_people, security_deposit and cleaning_fee] from string to float, removed '$'
 <br>- ADD</pre>
 ## EDA Feature Importances
-### Overview of the Data from 2015-2018 (Train Data)
+### Overview of the Data from 2015-2020
 ![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/Daily_rate_over_time.png)
 <br>-There is clear seasonality between months. Spike in Airbnb Rentals in 2017 were strongly linked to rent increases in some of the largest US metro areas.
 ![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/Distribution_Daily_Prices.png)
@@ -129,7 +129,7 @@ My goal is this project is to predict daily airbnb listing prices, and understan
 <br>-Next Step: Do not proceed with these features
 
 ## Model Tuning
-![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/Graphs/Metrics_over_iterations.png)
+![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/Metrics_over_iterations.png)
 <br>Across all feature engineering attemps, there is some slight overfitting.
 <br>**Eliminate all room_type features except Entire House/Apartment& Shared room.**
 <br>-Cross-Validation R2 for Random Forest: No change, 0.93, RMSE: 1.20
