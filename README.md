@@ -105,7 +105,7 @@ My goal is this project is to predict daily airbnb listing prices, and understan
 <br>Other: Treasure Island/YBI</pre>
 <br>-Cross-Validation R2 for Random Forest: Dropped to 0.86
 <br>-Next Step: Do not proceed with this feature
-<br><br>**Length of Listing Name**
+<br><br>**Length of Listing Name, Summary, Description, and Space**
 <br>Created features to identity the length (in characters) of the listing name, space, summary, and description. From the below plot, it appears there could be a positive relationship between the length of the listing name, and the listing price.
 ![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/Len_of_Listing_Name.png)
 <br>-Added this feature into the current best performing model
