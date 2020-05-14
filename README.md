@@ -114,17 +114,34 @@ My goal is this project is to predict daily airbnb listing prices, and understan
 ![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/Length_text_feat_imp.png)
 <br>-Next Step: Continue with this new feature
 <br><br>**Natural Language Processing**
-<br>ADD
+<br>Vectorizing & Clustering "Summary", top clusters:
+<pre><br>0, san, francisco, home, located, city, apartment, heart, neighborhood, great, bedroom
+<br>1, place, good, adventurers, solo, couples, travelers, business, love, ll, close
+<br>2, room, living, kitchen, private, bathroom, bedroom, shared, large, dining, house
+<br>3, home, sf, apartment, city, bedroom, modern, views, great, kitchen, space
+<br>4, union, square, hill, wharf, nob, fisherman, north, chinatown, walking, beach
+<br>5, gate, golden, park, beach, blocks, bridge, ocean, restaurants, haight, located
+<br>6, bed, queen, size, private, bedroom, room, bathroom, sofa, king, tv
+<br>7, mission, restaurants, bart, street, walk, located, away, park, sf, blocks</pre>
+<br>From this, I vectorized the text in "Summary" to 100 features of words, and fit my Random Forest to this data.
+<br>-Cross-Validation R2 for Random Forest: Dropped to 0.86
+<br>-None of the words appeared in the top feature importances.
+<br>-Next Step: Do not proceed with these features
 
 ## Model Tuning
-<br><br>**Eliminate all room_type features except Entire House/Apartment& Shared room.**
+<br>**Eliminate all room_type features except Entire House/Apartment& Shared room.**
 <br>-Cross-Validation R2 for Random Forest: Increased to 0.89, RMSE: 1.04
 <br>-Next Step: Since we were able to eliminate features, seems worth it to reduce the model
 <br><br>**Eliminate all property types except House or Apartment**
 <br>-Cross-Validation R2 for Random Forest: Reduced to 0.88
-<br>-Next Step: Did not reduce performance too much, and was able to remove a lot of features. TBD.
+<br>-Next Step: Did not reduce performance too much, but was able to remove a lot of features. TBD.
+<br>**Grid Search to Optimize Model Performance**
+<br>-Cross-Validation R2 for Random Forest: 
+<br>-Next Step: Test the model on the final test data
 
 
+## For Fun: Neural Network:
+<br>
 ## Conclusion: 
 
 
