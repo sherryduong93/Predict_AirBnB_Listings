@@ -1,5 +1,5 @@
 # Predicting Airbnb Daily Listing Prices
-![image](https://moneymorning.com/wp-content/blogs.dir/1/files/2019/04/shutterstock_712018732-1280x720.jpg)
+![image](https://media.tegna-media.com/assets/WNEP/images/873d3bf7-ca77-4d74-8246-1348057bf5c9/873d3bf7-ca77-4d74-8246-1348057bf5c9_1920x1080.jpg)
 
 ## Motivations & Goals
 Airbnb has grown widely in the past five years due to increased interest in travel across the world.
@@ -142,8 +142,8 @@ My goal is this project is to predict daily airbnb listing prices, and understan
 
 ## For Fun: Neural Network:
 <br>
-## Conclusion: 
 
+## Conclusion: 
 
 
 ## Assumptions Made & Caveats....
