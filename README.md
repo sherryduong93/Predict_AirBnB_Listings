@@ -6,7 +6,7 @@ Airbnb has grown widely in the past five years due to increased interest in trav
 
 Meanwhile, in the Bay Area/San Francisco in particular, the cost of owning a home has continued to increase substantially year over year due to low supply. 
 
-My goal is this project is to predict daily airbnb listing prices, and understanding the most impactful features for determining listing prices
+My goal is this project is to predict daily airbnb listing prices, to get a better understanding of the most impactful features for determining listing prices. With this information, I would like to see how it compares to the housing market and value for properties.
 
 ## The Datasets
 
@@ -20,8 +20,7 @@ My goal is this project is to predict daily airbnb listing prices, and understan
 <br>**Data Cleaning**
 <pre>-Removed all columns with more that 70% of data being null
 <br>-Converted the "Last Scraped" date to date format, and engineered additional date features to indicate year, month-year, month, dayofweek, and day
-<br>-Converted columns related to currency (price, extra_people, security_deposit and cleaning_fee] from string to float, removed '$'
-<br>- ADD</pre>
+<br>-Converted columns related to currency (price, extra_people, security_deposit and cleaning_fee] from string to float, removed '$'</pre>
 ## EDA Feature Importances
 ### Overview of the Data from 2015-2020
 ![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/Daily_rate_over_time.png)
@@ -54,11 +53,12 @@ My goal is this project is to predict daily airbnb listing prices, and understan
 <br>-Test-Split Option 2: Randomized Test Size of 30% with all available data
 <br><br> **Dumb-Model: Just take the average of the train data and predict all future values as the average**
 <br>RMSE: 207.59
-<br>The average listing price is $234. This RMSE is not good, indicating that using the average listing price is not a good predictor.
+<br>-The average listing price is $234. 
+<br>This RMSE is not good, indicating that using the average listing price is not a good predictor.
 <br><br> **Baseline Models: No model tuning or feature engineering besides converting price to log. Will only be used for the model selection for tuning.** 
 <br>Features selected for Baseline Model (based on EDA): 'accommodates','bathrooms','bed_type','bedrooms', 'beds','cleaning_fee','extra_people', 'host_response_time', 'neighbourhood_cleansed', 'property_type', 'review_scores_cleanliness', 'review_scores_rating', 'room_type', 'security_deposit', 'year', 'month', 'day_of_week'
 <br>Data Processing: Converted Categorical Data to Dummies.
-<br><br>**Baseline Model Performance**
+<br><br>**Baseline Models Performance**
 <br>-Between both Test-Split Options, the performance of the models were the same.
 <br>-Linear Regression: Cross-Val R2: 0.61, RMSE: 1.53
 <br>-Decision Tree Regressor: Cross-Val R2: 0.81, RMSE: 1.33
@@ -140,21 +140,23 @@ My goal is this project is to predict daily airbnb listing prices, and understan
 <br>-Feature engineer one feature that captures whether or not the property is an apartment/house
 <br><br>**Grid Search to Optimize Model Performance**
 <br>-Performed GridSearch on Random Forest to obtain optimal parameters: max_features (20) & n_estimators(400)
-<br>-Cross-Validation R2 for Random Forest: 0.93, RMSE: 1.19
+<br>-Cross-Validation R2 for Random Forest: 0.94, RMSE: 1.17
 <br>-Next Step: Test the model on the final test data
 
 
 ## Result on the Test Data: 
+<br>Total Final Features: 73 (22 Main Features + Dummies)
 <br>The test set performed slightly below cross-validation performance, which I am happy with the results. 
-<br>R2 on Unseen Test Data: 0.92
-<br>RMSE on Unseen Test Data: 1.21
+<br>R2 on Unseen Test Data: 0.93
+<br>RMSE on Unseen Test Data: 1.19
 
 
 ## Assumptions Made & Caveats....
 <br>-Data Source: InsideAirbnb.com. 
-<br>-Listing Prices are set by the host and may not reflect the final price paid by the tenant.
+<br>-Listing Prices are set by the host and may not reflect the final price paid by the tenant. Thus, it would make sense that hosts that spend more time writing summaries and noting amenities would aim for a higher listing price. It cannot be confirmed whether or not the attempts were successful and tenants actually paid this much.
 
 ## Goals for future Analysis:
+<by>-Compare the listing prices to actual value of the property according to Zillow.
 <br>-Look into specific amenities and if they are more important 
 <br>-Inferential Model with Linear Regression
 <br>-Dive Deeper into Neural Network and deep learning model
