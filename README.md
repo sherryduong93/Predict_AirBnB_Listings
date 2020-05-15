@@ -140,15 +140,17 @@ My goal is this project is to predict daily airbnb listing prices, to get a bett
 <br>-Feature engineer one feature that captures whether or not the property is an apartment/house
 <br><br>**Grid Search to Optimize Model Performance**
 <br>-Performed GridSearch on Random Forest to obtain optimal parameters: max_features (20) & n_estimators(400)
-<br>-Cross-Validation R2 for Random Forest: 0.94, RMSE: 1.17
+<br>-Cross-Validation R2 for Random Forest: 0.94, RMSE: 1.18
 <br>-Next Step: Test the model on the final test data
 
 
-## Result on the Test Data: 
+## Results & Conclusion: 
 <br>Total Final Features: 73 (22 Main Features + Dummies)
-<br>The test set performed slightly below cross-validation performance, which I am happy with the results. 
-<br>R2 on Unseen Test Data: 0.93
-<br>RMSE on Unseen Test Data: 1.19
+![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/Final_model_feat_imp.png)
+<br>The test set performed the same as the cross-validation performance.
+<br>R2 on Unseen Test Data: 0.94
+<br>RMSE on Unseen Test Data: 1.18
+<br>Based on this model, the most important features for determining price of listing in San Francisco are: number of bedrooms, whether or not the listing is private space or shared, the length of the summary & name of listing, the number of people accomodated, and if there are extra fees associated.
 
 
 ## Assumptions Made & Caveats....
