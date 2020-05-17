@@ -132,10 +132,10 @@ My goal is this project is to predict daily airbnb listing prices, to get a bett
 ![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/Metrics_over_iterations.png)
 <br>Across all feature engineering attemps, there is some slight overfitting.
 <br>**Eliminate all room_type features except Entire House/Apartment& Shared room.**
-<br>-Cross-Validation R2 for Random Forest: No change, 0.93, RMSE: 1.20
+<br>-Cross-Validation R2 for Random Forest: No change, 0.93, RMSE: 61.83
 <br>-Next Step: Proceed with this modification
 <br><br>**Eliminate all property types except House or Apartment**
-<br>-Cross-Validation R2 for Random Forest: No change, 0.93, RMSE: 1.20
+<br>-Cross-Validation R2 for Random Forest: No change, 0.93, RMSE: 61.83
 <br>-Next Step: Did not reduce performance too much, but was able to remove a lot of features.
 <br>-Feature engineer one feature that captures whether or not the property is an apartment/house
 <br><br>**Grid Search to Optimize Model Performance**
