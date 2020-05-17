@@ -60,10 +60,10 @@ My goal is this project is to predict daily airbnb listing prices, to get a bett
 <br>Data Processing: Converted Categorical Data to Dummies.
 <br><br>**Baseline Models Performance**
 <br>-Between both Test-Split Options, the performance of the models were the same.
-<br>-Linear Regression: Cross-Val R2: 0.61, RMSE: 1.53
-<br>-Decision Tree Regressor: Cross-Val R2: 0.81, RMSE: 1.33
-<br>-Random Forest Regressor: Cross-Val R2: 0.88, RMSE: 1.26
-<br>-Gradient Boosting Regressor: Cross-Val R2: 0.65, RMSE: 1.49
+<br>-Linear Regression: Cross-Val R2: 0.61, RMSE: 189.06
+<br>-Decision Tree Regressor: Cross-Val R2: 0.81, RMSE: 96.53
+<br>-Random Forest Regressor: Cross-Val Adj R2: 0.88, RMSE: 81.89
+<br>-Gradient Boosting Regressor: Cross-Val R2: 0.65, RMSE: 152.38
 <br>**Will proceed with Random Forest Estimator for future iterations.**
 <br><br>**Feature Importance from Baseline Model**
 ![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/Feature_imp_BaseModel_RF.png)
@@ -77,18 +77,18 @@ My goal is this project is to predict daily airbnb listing prices, to get a bett
 <br><br>
 ### Additional Feature Engineering
 <br>**Converting The Fee Columns to "0/1" based on whether or not they had the fee**
-<br>-Cross-Validation R2 for Random Forest: Dropped to 0.84
+<br>-Cross-Validation R2 for Random Forest: Dropped to 0.82
 <br>-Next Step: Keep columns as is
 <br><br>**Creating a feature that captures the count of amenities provided**
 <br>-Currently the "Amenities" columns is a set of amenities, stored as text. I will count the number of items stored in the set, with each item reflecting an amenity provided by the property.
-<br>-Cross-Validation R2 for Random Forest: Increased to 0.91, RMSE: 1.23
+<br>-Cross-Validation R2 for Random Forest: Increased to 0.90, RMSE: 71.56
 <br>-The num_amenities feature also became the 3rd most important feature in the feature_importance plot.
 ![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/num_amenities_imp.png)
 <br>-Next Step: Continue with this feature for future implementation
 <br><br>**Categorical Feature for Accomodations/beds/bedrooms/bathrooms**
 <br>-Once the number reaches a certain threshold for the accomodation columns, there is an apparent diminishing return.
 <br>-I will create features that determine whether or not the listing is over this threshold.
-<br>-Cross-Validation R2 for Random Forest: No change, 0.91
+<br>-Cross-Validation R2 for Random Forest: No change, 0.90
 <br>-Next Step: Not much of an improvement to keep the feature. Remove to reduce model complexity.
 <br><br>**Neighborhoods**
 <br>After converting the price density into a heatmap on top of San Francisco, it is apparent that the highest listing prices are concentrated in the center of San Francisco.
@@ -109,7 +109,7 @@ My goal is this project is to predict daily airbnb listing prices, to get a bett
 <br>Created features to identity the length (in characters) of the listing name, space, summary, and description. From the below plot, it appears there could be a positive relationship between the length of the listing name, and the listing price.
 ![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/Len_of_Listing_Name.png)
 <br>-Added this feature into the current best performing model
-<br>-Cross-Validation R2 for Random Forest: Increased to 0.93, RMSE: 1.20
+<br>-Cross-Validation R2 for Random Forest: Increased to 0.93, RMSE: 61.29
 <br>-Length of summary & name became 2 of the top 10 features
 ![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/Length_text_feat_imp.png)
 <br>-Next Step: Continue with this new feature
@@ -140,7 +140,7 @@ My goal is this project is to predict daily airbnb listing prices, to get a bett
 <br>-Feature engineer one feature that captures whether or not the property is an apartment/house
 <br><br>**Grid Search to Optimize Model Performance**
 <br>-Performed GridSearch on Random Forest to obtain optimal parameters: max_features (20) & n_estimators(400)
-<br>-Cross-Validation R2 for Random Forest: 0.94, RMSE: 1.18
+<br>-Cross-Validation R2 for Random Forest: 0.94, RMSE: 59.33
 <br>-Next Step: Test the model on the final test data
 
 
@@ -149,7 +149,8 @@ My goal is this project is to predict daily airbnb listing prices, to get a bett
 ![image](https://github.com/sherryduong93/Predict_AirBnB_Listings/blob/working/Graphs/Final_model_feat_imp.png)
 <br>The test set performed the same as the cross-validation performance.
 <br>R2 on Unseen Test Data: 0.94
-<br>RMSE on Unseen Test Data: 1.18
+<br>Adjusted R2: 0.93
+<br>RMSE on Unseen Test Data: 56.68
 <br>Based on this model, the most important features for determining price of listing in San Francisco are: number of bedrooms, whether or not the listing is private space or shared, the length of the summary & name of listing, the number of people accomodated, and if there are extra fees associated.
 
 
